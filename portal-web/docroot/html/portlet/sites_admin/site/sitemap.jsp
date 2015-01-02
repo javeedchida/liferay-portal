@@ -53,15 +53,28 @@ if (!host.equals(privateLayoutSet.getVirtualHostname())) {
 
 <br /><br />
 
+<script language="javascript">
+/* 
+    Provide a simple confirmation dialog to the user. Clicking OK loads the 
+    URL in a new browser window. 
+*/
+function confirmSitemapSubmission(url){
+    var sitemapConfirmationMessage = "<liferay-ui:message key='send-sitemap-confirmation'/>";
+	if(confirm(sitemapConfirmationMessage)){
+		window.open(url);
+	}
+}
+</script>
+
 <aui:fieldset label="public-pages">
 	<%= LanguageUtil.format(request, "send-sitemap-information-to-preview", new Object[] {"<a target=\"_blank\" href=\"" + HtmlUtil.escapeAttribute(publicSitemapUrl) + "\">", "</a>"}, false) %>
 
 	<ul>
 		<li>
-			<aui:a href='<%= "http://www.google.com/webmasters/sitemaps/ping?sitemap=" + HtmlUtil.escapeURL(publicSitemapUrl) %>' target="_blank">Google</aui:a>
+			<a href="#" onclick='javascript:confirmSitemapSubmission("http://www.google.com/webmasters/sitemaps/ping?sitemap=" + "<%=HtmlUtil.escapeURL(publicSitemapUrl)%>");return false;' target="_blank" title='<liferay-ui:message key="opens-new-window" />'>Google<span class="opens-new-window-accessible"/></a>
 		</li>
 		<li>
-			<aui:a href='<%= "https://siteexplorer.search.yahoo.com/submit/ping?sitemap=" + HtmlUtil.escapeURL(publicSitemapUrl) %>' target="_blank">Yahoo!</aui:a> (<liferay-ui:message key="requires-login" />)
+			<a href="#" onclick='javascript:confirmSitemapSubmission("https://siteexplorer.search.yahoo.com/submit/ping?sitemap=" + "<%=HtmlUtil.escapeURL(publicSitemapUrl)%>");return false;' target="_blank" title='<liferay-ui:message key="opens-new-window" />'>Yahoo!<span class="opens-new-window-accessible"/></a> (<liferay-ui:message key="requires-login" />)
 		</li>
 	</ul>
 </aui:fieldset>
@@ -71,10 +84,10 @@ if (!host.equals(privateLayoutSet.getVirtualHostname())) {
 
 	<ul>
 		<li>
-			<aui:a href='<%= "http://www.google.com/webmasters/sitemaps/ping?sitemap=" + HtmlUtil.escapeURL(privateSitemapUrl) %>' target="_blank">Google</aui:a>
+			<a href="#" onclick='javascript:confirmSitemapSubmission("http://www.google.com/webmasters/sitemaps/ping?sitemap=" + "<%=HtmlUtil.escapeURL(privateSitemapUrl)%>");return false;' target="_blank" title='<liferay-ui:message key="opens-new-window" />'>Google<span class="opens-new-window-accessible"/></a>
 		</li>
 		<li>
-			<aui:a href='<%= "https://siteexplorer.search.yahoo.com/submit/ping?sitemap=" + HtmlUtil.escapeURL(privateSitemapUrl) %>' target="_blank">Yahoo!</aui:a> (<liferay-ui:message key="requires-login" />)
+			<a href="#" onclick='javascript:confirmSitemapSubmission("https://siteexplorer.search.yahoo.com/submit/ping?sitemap=" + "<%=HtmlUtil.escapeURL(privateSitemapUrl)%>");return false;' target="_blank" title='<liferay-ui:message key="opens-new-window" />'>Yahoo!<span class="opens-new-window-accessible"/></a> (<liferay-ui:message key="requires-login" />)
 		</li>
 	</ul>
 </aui:fieldset>
